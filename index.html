@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>WindRider · 电子信息 · 清华大学</title>
+  <!-- 学术风格：衬线字体与无衬线字体结合，干净整洁 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafaf8;
+      color: #1e1e1e;
+      font-family: 'Inter', 'Noto Serif SC', 'Times New Roman', Georgia, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2.5rem 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* 学术简历卡片：极简、留白、结构清晰 */
+    .academic-card {
+      max-width: 820px;
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #e2e0dc;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 3rem 2.8rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .academic-card:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    /* 头部：姓名与机构 */
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+      border-bottom: 1px solid #e8e6e1;
+      padding-bottom: 1.8rem;
+    }
+
+    .name-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .name {
+      font-family: 'Noto Serif SC', 'Times New Roman', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+
+    .english-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #5e5e5e;
+      margin-top: 0.2rem;
+      letter-spacing: 0.3px;
+    }
+
+    .affiliation {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+
+    .university {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #2c2c2c;
+      letter-spacing: 0.4px;
+    }
+
+    .department {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #4a4a4a;
+      background: #f3f2ef;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: #6b6b6b;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin-top: 0.2rem;
+    }
+
+    /* 联系方式行 */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 1.8rem 0 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #3d3d3d;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #3d3d3d;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .contact-item:hover {
+      color: #8b1a1a; /* 清华紫/深红调 */
+      border-bottom: 1px solid #c4a27e;
+    }
+
+    .contact-icon {
+      font-size: 1.1rem;
+      opacity: 0.75;
+    }
+
+    /* 段落与标题样式 */
+    .section {
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title {
+      font-family: 'Inter', 'Noto Serif SC', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #4e4e4e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #eae7e2;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title span {
+      font-size: 1.2rem;
+    }
+
+    .research-interests {
+      font-size: 1rem;
+      color: #2b2b2b;
+      line-height: 1.8;
+      background: #f9f9f7;
+      padding: 1.2rem 1.5rem;
+      border-left: 4px solid #7a5c4c;
+      font-style: normal;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .education-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-degree {
+      font-weight: 650;
+      font-size: 1.05rem;
+      color: #1e1e1e;
+    }
+
+    .edu-school {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #4a4a4a;
+      margin-top: 0.2rem;
+    }
+
+    .edu-year {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: #6b5e53;
+    }
+
+    /* 出版物列表 */
+    .pub-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .pub-item {
+      margin-bottom: 1.2rem;
+      padding-left: 1.2rem;
+      border-left: 2px solid #d9d4cc;
+      font-size: 0.98rem;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      color: #1f1f1f;
+    }
+
+    .pub-authors {
+      color: #4d4d4d;
+      margin: 0.2rem 0 0.1rem;
+      font-size: 0.9rem;
+    }
+
+    .pub-journal {
+      font-style: italic;
+      color: #5c5c5c;
+    }
+
+    .pub-link {
+      color: #7a5c4c;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+
+    .pub-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 项目与技能标签 */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill {
+      background: #ffffff;
+      border: 1px solid #d6d3cc;
+      color: #3b3b3b;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #8b8b8b;
+      text-align: center;
+      border-top: 1px solid #ededeb;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .academic-card {
+        padding: 2rem 1.5rem;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .affiliation {
+        align-items: flex-start;
+        text-align: left;
+      }
+      .name {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="academic-card">
+    <!-- 头部：姓名 + 机构 -->
+    <div class="header">
+      <div class="name-section">
+        <h1 class="name">WindRider</h1>
+        <div class="english-name">Rider Wind · Academic Profile</div>
+      </div>
+      <div class="affiliation">
+        <div class="university">清华大学</div>
+        <div class="department">电子信息</div>
+        <div class="location">
+          <span>📍</span> 北京 · 中国
+        </div>
+      </div>
+    </div>
+
+    <!-- 联系方式 -->
+    <div class="contact-row">
+      <a href="mailto:windrider@mails.tsinghua.edu.cn" class="contact-item">
+        <span class="contact-icon">✉️</span> windrider@tsinghua.edu.cn
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">🔬</span> Google Scholar
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">💻</span> GitHub
+      </a>
+      <span class="contact-item">
+        <span class="contact-icon">📱</span> +86 (010) 6278-xxxx
+      </span>
+    </div>
+
+    <!-- 研究兴趣 -->
+    <div class="section">
+      <div class="section-title">
+        <span>📖</span> 研究兴趣
+      </div>
+      <div class="research-interests">
+        无线通信与信号处理 · 智能超表面 (RIS) 辅助通信 · 机器学习在物理层中的应用 · 
+        物联网 (IoT) 边缘计算 · 太赫兹通信与感知一体化。
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section">
+      <div class="section-title">
+        <span>🎓</span> 教育背景
+      </div>
+      <div class="education-item">
+        <div class="edu-degree">硕士研究生 · 电子信息</div>
+        <div class="edu-school">
+          <span>清华大学 · 信息科学技术学院</span>
+          <span class="edu-year">2023 – 至今</span>
+        </div>
+        <div style="font-size:0.9rem; color:#4d4d4d; margin-top:0.2rem;">导师：郑教授 · 计算机实验室</div>
+      </div>
+      <div class="education-item">
+        <div class="edu-degree">工学学士 · 软件工程</div>
+        <div class="edu-school">
+          <span>清华大学</span>
+          <span class="edu-year">2019 – 2023</span>
+        </div>
+        <div style="font-size:0.9rem; color:#4d4d4d; margin-top:0.2rem;">优秀毕业生 · 综合论文训练获校级优秀</div>
+      </div>
+    </div>
+
+    <!-- 代表性论文 -->
+    <div class="section">
+      <div class="section-title">
+        <span>📄</span> 近期出版物
+      </div>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <div class="pub-title">“Deep Learning-Based Channel Estimation for RIS-Assisted mmWave Systems”</div>
+          <div class="pub-authors">WindRider, J. Zhang, L. Wang</div>
+          <div class="pub-journal">IEEE Transactions on Wireless Communications, 2025</div>
+          <a href="#" class="pub-link">[PDF]</a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">“Energy-Efficient Resource Allocation in THz Communications with Intelligent Reflecting Surfaces”</div>
+          <div class="pub-authors">WindRider, Y. Chen, S. Li</div>
+          <div class="pub-journal">IEEE International Conference on Communications (ICC), 2024</div>
+          <a href="#" class="pub-link">[PDF]</a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">“面向6G的智能超表面波束成形优化”</div>
+          <div class="pub-authors">WindRider, 张明, 李华</div>
+          <div class="pub-journal">电子学报, 2024</div>
+          <a href="#" class="pub-link">[DOI]</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 研究项目 -->
+    <div class="section">
+      <div class="section-title">
+        <span>⚡</span> 研究项目
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="font-weight:650;">国家自然科学基金重点项目 · 智能超表面赋能6G覆盖增强</div>
+        <div style="color:#4a4a4a; font-size:0.9rem;">核心参与人 · 负责信道建模与深度学习算法设计 (2024-至今)</div>
+      </div>
+      <div>
+        <div style="font-weight:650;">华为创新研究计划 · 太赫兹通信感知一体化</div>
+        <div style="color:#4a4a4a; font-size:0.9rem;">学生负责人 · 搭建仿真平台并发表论文2篇 (2023-2024)</div>
+      </div>
+    </div>
+
+    <!-- 技术技能 -->
+    <div class="section">
+      <div class="section-title">
+        <span>🛠️</span> 专业技能
+      </div>
+      <div class="skill-tags">
+        <span class="skill">MATLAB</span>
+        <span class="skill">Python (PyTorch, TensorFlow)</span>
+        <span class="skill">C++</span>
+        <span class="skill">Verilog / FPGA</span>
+        <span class="skill">NS-3 网络仿真</span>
+        <span class="skill">LaTeX</span>
+        <span class="skill">Linux</span>
+        <span class="skill">Git</span>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      <span>© 2026 WindRider · 清华大学电子信息</span>
+      <span>更新于 2026年7月</span>
+    </div>
+  </main>
+</body>
+</html>
