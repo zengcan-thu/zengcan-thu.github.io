@@ -41,7 +41,7 @@
     .nav-container {
       display: flex;
       align-items: baseline;
-      gap: 48px; /* 增加导航项之间的间距 */
+      gap: 48px;
       flex-wrap: wrap;
     }
 
@@ -50,7 +50,7 @@
       font-weight: 550;
       letter-spacing: -0.3px;
       color: #1e272e;
-      margin-right: 64px; /* 增加名字和导航链接之间的间距 */
+      margin-right: 64px;
     }
 
     .nav-link {
@@ -75,21 +75,23 @@
       grid-template-columns: 230px 1fr;
       gap: 56px;
       margin-bottom: 60px;
-      align-items: start; /* 确保侧边栏从顶部开始 */
+      align-items: start;
+      position: relative;
     }
 
-    /* 侧边栏卡片风格 - 添加sticky定位 */
+    /* 侧边栏卡片风格 - 使用 fixed 定位彻底固定 */
     .sidebar {
       background: white;
       border-radius: 20px;
       padding: 28px 16px 32px;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
       text-align: center;
-      height: fit-content;
+      width: 230px;
       border: 1px solid #f0f0f0;
       transition: box-shadow 0.3s;
-      position: sticky;
-      top: 100px; /* 导航栏高度 + 一些间距 */
+      position: fixed;
+      top: 120px;
+      z-index: 5;
     }
 
     .sidebar:hover {
@@ -168,7 +170,11 @@
       text-decoration: underline;
     }
 
-    /* 内容区域：为每个section添加滚动偏移量，防止被sticky导航遮挡 */
+    /* 右侧内容区域 - 保持正常流 */
+    .content {
+      grid-column: 2;
+    }
+
     .content h2 {
       font-size: 1.7rem;
       font-weight: 600;
@@ -177,7 +183,7 @@
       letter-spacing: -0.3px;
       border-bottom: 1.5px solid #e2e8f0;
       padding-bottom: 8px;
-      scroll-margin-top: 100px; /* 关键：保证标题滚动后不被导航栏遮挡 */
+      scroll-margin-top: 100px;
     }
 
     .content h2:first-of-type {
@@ -312,14 +318,14 @@
       }
 
       .nav-container {
-        gap: 24px; /* 移动端适当减小间距 */
+        gap: 24px;
       }
 
       .nav-name {
         font-size: 1.4rem;
         width: 100%;
         margin-bottom: 6px;
-        margin-right: 0; /* 移动端取消额外右边距 */
+        margin-right: 0;
       }
 
       .main-wrap {
@@ -328,7 +334,8 @@
       }
 
       .sidebar {
-        position: static; /* 移动端取消sticky，恢复正常流 */
+        position: static;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -336,6 +343,10 @@
         text-align: center;
         padding: 24px 16px;
         gap: 12px;
+      }
+
+      .content {
+        grid-column: 1;
       }
 
       .avatar {
@@ -380,7 +391,7 @@
         background: white;
       }
       .sidebar {
-        position: static; /* 打印时取消sticky */
+        position: static;
         box-shadow: none;
         border: 1px solid #ccc;
       }
@@ -402,7 +413,7 @@
   </nav>
 
   <div class="main-wrap">
-    <!-- 左侧侧边栏 - 现在会固定在页面上 -->
+    <!-- 左侧侧边栏 - 使用fixed定位完全固定 -->
     <aside class="sidebar">
       <img class="avatar" src="avatar.jpg" alt="WindRider portrait">
       <div class="sidebar-name">WindRider</div>
@@ -426,7 +437,7 @@
       </div>
     </aside>
 
-    <!-- 右侧正文内容 - 可以正常滚动 -->
+    <!-- 右侧正文内容 -->
     <section class="content">
       <!-- About Me -->
       <h2 id="about">About Me</h2>
@@ -441,7 +452,7 @@
         <li><strong>Sept. 2016 — June 2019:</strong> The High School Attached to Northwest Normal University, Lanzhou</li>
       </ul>
 
-      <!-- Experiences - 修复乱行，采用简洁列表格式 -->
+      <!-- Experiences -->
       <h2 id="experiences">💼 Experiences</h2>
       <ul>
         <li>
