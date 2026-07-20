@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>WindRider · 电子信息 · 清华大学</title>
-  <!-- 学术风格：衬线字体与无衬线字体结合，干净整洁 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>WindRider · Homepage</title>
   <style>
     * {
       margin: 0;
@@ -15,418 +11,518 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #fafaf8;
-      color: #1e1e1e;
-      font-family: 'Inter', 'Noto Serif SC', 'Times New Roman', Georgia, serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fafbfc;
+      color: #2d3436;
+      line-height: 1.6;
+      margin: 0 auto;
+      padding: 0 28px;
+      max-width: 1150px;
+      transition: background 0.2s ease;
+    }
+
+    /* 导航栏优化：左对齐，增加间距 */
+    nav {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 48px;
+      backdrop-filter: blur(6px);
+      background: rgba(250, 251, 252, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2.5rem 1.5rem;
-      line-height: 1.7;
-    }
-
-    /* 学术简历卡片：极简、留白、结构清晰 */
-    .academic-card {
-      max-width: 820px;
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid #e2e0dc;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
-      padding: 3rem 2.8rem;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .academic-card:hover {
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-
-    /* 头部：姓名与机构 */
-    .header {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
+      align-items: baseline;
+      gap: 48px; /* 增加导航项之间的间距 */
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.2rem;
-      border-bottom: 1px solid #e8e6e1;
-      padding-bottom: 1.8rem;
     }
 
-    .name-section {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .nav-name {
+      font-size: 1.5rem;
+      font-weight: 550;
+      letter-spacing: -0.3px;
+      color: #1e272e;
+      margin-right: 64px; /* 增加名字和导航链接之间的间距 */
     }
 
-    .name {
-      font-family: 'Noto Serif SC', 'Times New Roman', serif;
-      font-size: 2.6rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #1a1a1a;
-      line-height: 1.2;
-    }
-
-    .english-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #5e5e5e;
-      margin-top: 0.2rem;
-      letter-spacing: 0.3px;
-    }
-
-    .affiliation {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.3rem;
-    }
-
-    .university {
-      font-family: 'Noto Serif SC', serif;
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: #2c2c2c;
-      letter-spacing: 0.4px;
-    }
-
-    .department {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #4a4a4a;
-      background: #f3f2ef;
-      padding: 0.25rem 1rem;
-      border-radius: 20px;
-      display: inline-block;
-      margin-top: 0.2rem;
-    }
-
-    .location {
-      font-size: 0.9rem;
-      color: #6b6b6b;
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-      margin-top: 0.2rem;
-    }
-
-    /* 联系方式行 */
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.8rem;
-      margin: 1.8rem 0 2rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      color: #3d3d3d;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .nav-link {
+      color: #4a5568;
       text-decoration: none;
-      color: #3d3d3d;
-      transition: color 0.2s;
-      border-bottom: 1px solid transparent;
-    }
-
-    .contact-item:hover {
-      color: #8b1a1a; /* 清华紫/深红调 */
-      border-bottom: 1px solid #c4a27e;
-    }
-
-    .contact-icon {
-      font-size: 1.1rem;
-      opacity: 0.75;
-    }
-
-    /* 段落与标题样式 */
-    .section {
-      margin-bottom: 2.2rem;
-    }
-
-    .section-title {
-      font-family: 'Inter', 'Noto Serif SC', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #4e4e4e;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-bottom: 1px solid #eae7e2;
-      padding-bottom: 0.5rem;
-    }
-
-    .section-title span {
-      font-size: 1.2rem;
-    }
-
-    .research-interests {
       font-size: 1rem;
-      color: #2b2b2b;
-      line-height: 1.8;
-      background: #f9f9f7;
-      padding: 1.2rem 1.5rem;
-      border-left: 4px solid #7a5c4c;
-      font-style: normal;
-      margin: 0.5rem 0 0.8rem;
+      font-weight: 460;
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
     }
 
-    .education-item {
-      margin-bottom: 1.2rem;
+    .nav-link:hover {
+      color: #0b5e8c;
+      border-bottom-color: #0b5e8c;
     }
 
-    .edu-degree {
-      font-weight: 650;
-      font-size: 1.05rem;
-      color: #1e1e1e;
+    /* 主布局微调 - 添加对齐方式 */
+    .main-wrap {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 56px;
+      margin-bottom: 60px;
+      align-items: start; /* 确保侧边栏从顶部开始 */
     }
 
-    .edu-school {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      color: #4a4a4a;
-      margin-top: 0.2rem;
+    /* 侧边栏卡片风格 - 添加sticky定位 */
+    .sidebar {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 16px 32px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
+      text-align: center;
+      height: fit-content;
+      border: 1px solid #f0f0f0;
+      transition: box-shadow 0.3s;
+      position: sticky;
+      top: 100px; /* 导航栏高度 + 一些间距 */
     }
 
-    .edu-year {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      color: #6b5e53;
+    .sidebar:hover {
+      box-shadow: 0 20px 32px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.02);
     }
 
-    /* 出版物列表 */
-    .pub-list {
-      list-style: none;
-      margin-top: 0.5rem;
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+      background: #edf2f7;
     }
 
-    .pub-item {
-      margin-bottom: 1.2rem;
-      padding-left: 1.2rem;
-      border-left: 2px solid #d9d4cc;
-      font-size: 0.98rem;
-    }
-
-    .pub-title {
+    .sidebar-name {
+      font-size: 1.5rem;
       font-weight: 600;
-      color: #1f1f1f;
+      letter-spacing: -0.2px;
+      color: #1a202c;
+      margin-bottom: 4px;
     }
 
-    .pub-authors {
-      color: #4d4d4d;
-      margin: 0.2rem 0 0.1rem;
+    .sidebar-slogan {
+      color: #5a6b7a;
       font-size: 0.9rem;
+      font-weight: 470;
+      margin-bottom: 28px;
+      background: #f2f5f9;
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 30px;
     }
 
-    .pub-journal {
-      font-style: italic;
-      color: #5c5c5c;
+    .sidebar-links {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 8px;
     }
 
-    .pub-link {
-      color: #7a5c4c;
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #2d3748;
+      transition: background 0.15s;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.85rem;
-      margin-left: 0.5rem;
     }
 
-    .pub-link:hover {
+    .sidebar-item:hover {
+      background: #f7f9fc;
+    }
+
+    .sidebar-item span:first-child {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+      color: #4a627a;
+    }
+
+    .sidebar-item a {
+      color: #2d3748;
+      text-decoration: none;
+      font-weight: 470;
+    }
+
+    .sidebar-item a:hover {
+      color: #0b5e8c;
       text-decoration: underline;
     }
 
-    /* 项目与技能标签 */
-    .skill-tags {
+    /* 内容区域：为每个section添加滚动偏移量，防止被sticky导航遮挡 */
+    .content h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin: 38px 0 14px;
+      color: #0b2b3b;
+      letter-spacing: -0.3px;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 8px;
+      scroll-margin-top: 100px; /* 关键：保证标题滚动后不被导航栏遮挡 */
+    }
+
+    .content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .content p {
+      font-size: 1.05rem;
+      color: #2c3e50;
+      margin-bottom: 16px;
+    }
+
+    .content a {
+      color: #1a6b9e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #a0c4e6;
+    }
+
+    .content a:hover {
+      color: #0a4b6e;
+      border-bottom: 1px solid #0a4b6e;
+    }
+
+    .content ul {
+      padding-left: 20px;
+      margin: 10px 0 20px;
+      list-style-type: none;
+    }
+
+    .content li {
+      font-size: 1.02rem;
+      margin: 12px 0;
+      color: #2d3a4a;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .content li::before {
+      content: "▹";
+      color: #2c7da0;
+      font-weight: bold;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* 经历列表样式优化 */
+    .experience-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .experience-item .experience-title {
+      font-weight: 600;
+      color: #1a202c;
+    }
+
+    .experience-item .experience-meta {
+      font-size: 0.9rem;
+      color: #5a6b7a;
+      font-style: italic;
+    }
+
+    .experience-item .experience-desc {
+      font-size: 0.98rem;
+      color: #2d3a4a;
+    }
+
+    /* 项目卡片样式 */
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin-bottom: 8px;
+    }
+
+    .project-card .project-meta {
+      font-size: 0.9rem;
+      color: #5a6b7a;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .project-card p {
+      font-size: 0.98rem;
+      color: #2d3a4a;
+      margin-bottom: 0;
+    }
+
+    .project-card .project-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 0.5rem;
+      gap: 8px;
+      margin-top: 12px;
     }
 
-    .skill {
-      background: #ffffff;
-      border: 1px solid #d6d3cc;
-      color: #3b3b3b;
-      padding: 0.3rem 1.2rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
+    .project-tech span {
+      background: #e8f0fe;
+      color: #1a6b9e;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
       font-weight: 500;
-      font-family: 'Inter', sans-serif;
     }
 
-    .footer-note {
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: #8b8b8b;
-      text-align: center;
-      border-top: 1px solid #ededeb;
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
+    /* 响应式 */
+    @media (max-width: 768px) {
+      body {
+        padding: 0 20px;
+      }
+
+      nav {
+        padding: 20px 0 16px;
+        margin-bottom: 32px;
+      }
+
+      .nav-container {
+        gap: 24px; /* 移动端适当减小间距 */
+      }
+
+      .nav-name {
+        font-size: 1.4rem;
+        width: 100%;
+        margin-bottom: 6px;
+        margin-right: 0; /* 移动端取消额外右边距 */
+      }
+
+      .main-wrap {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .sidebar {
+        position: static; /* 移动端取消sticky，恢复正常流 */
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px 16px;
+        gap: 12px;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+
+      .sidebar-name {
+        font-size: 1.4rem;
+        width: 100%;
+      }
+
+      .sidebar-slogan {
+        margin-bottom: 8px;
+        width: 100%;
+      }
+
+      .sidebar-links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+        margin-top: 8px;
+      }
+
+      .sidebar-item {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+
+      .content h2 {
+        font-size: 1.5rem;
+        margin-top: 28px;
+        scroll-margin-top: 120px;
+      }
     }
 
-    @media (max-width: 600px) {
-      .academic-card {
-        padding: 2rem 1.5rem;
+    @media print {
+      body {
+        background: white;
       }
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .affiliation {
-        align-items: flex-start;
-        text-align: left;
-      }
-      .name {
-        font-size: 2.2rem;
+      .sidebar {
+        position: static; /* 打印时取消sticky */
+        box-shadow: none;
+        border: 1px solid #ccc;
       }
     }
   </style>
 </head>
 <body>
-  <main class="academic-card">
-    <!-- 头部：姓名 + 机构 -->
-    <div class="header">
-      <div class="name-section">
-        <h1 class="name">WindRider</h1>
-        <div class="english-name">Rider Wind · Academic Profile</div>
-      </div>
-      <div class="affiliation">
-        <div class="university">清华大学</div>
-        <div class="department">电子信息</div>
-        <div class="location">
-          <span>📍</span> 北京 · 中国
+  <!-- 导航栏：左对齐，间距已增加 -->
+  <nav>
+    <div class="nav-container">
+      <span class="nav-name">WindRider</span>
+      <a href="#about" class="nav-link">About Me</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#experiences" class="nav-link">Experiences</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#honors" class="nav-link">Honors</a>
+      <a href="#misc" class="nav-link">Misc</a>
+    </div>
+  </nav>
+
+  <div class="main-wrap">
+    <!-- 左侧侧边栏 - 现在会固定在页面上 -->
+    <aside class="sidebar">
+      <img class="avatar" src="avatar.jpg" alt="WindRider portrait">
+      <div class="sidebar-name">WindRider</div>
+      <div class="sidebar-links">
+        <div class="sidebar-item">
+          <span>📍</span>
+          <span>Beijing, China</span>
+        </div>
+        <div class="sidebar-item">
+          <span>✉️</span>
+          <span>goforit@qq.com</span>
+        </div>
+        <div class="sidebar-item">
+          <span>🐱</span>
+          <a href="https://github.com/your-github" target="_blank" rel="noopener">Github</a>
+        </div>
+        <div class="sidebar-item">
+          <span>🎓</span>
+          <a href="https://scholar.google.com/your-id" target="_blank" rel="noopener">Google Scholar</a>
         </div>
       </div>
-    </div>
+    </aside>
 
-    <!-- 联系方式 -->
-    <div class="contact-row">
-      <a href="mailto:windrider@mails.tsinghua.edu.cn" class="contact-item">
-        <span class="contact-icon">✉️</span> windrider@tsinghua.edu.cn
-      </a>
-      <a href="#" class="contact-item">
-        <span class="contact-icon">🔬</span> Google Scholar
-      </a>
-      <a href="#" class="contact-item">
-        <span class="contact-icon">💻</span> GitHub
-      </a>
-      <span class="contact-item">
-        <span class="contact-icon">📱</span> +86 (010) 6278-xxxx
-      </span>
-    </div>
+    <!-- 右侧正文内容 - 可以正常滚动 -->
+    <section class="content">
+      <!-- About Me -->
+      <h2 id="about">About Me</h2>
+      <p>I am <strong>WindRider (乘风)</strong>, a passionate researcher and engineer based in Beijing, China. I am currently seeking a <strong>Ph.D. position in machine learning</strong>, with a strong focus on building robust, private, and trustworthy learning systems.</p>
+      <p>My research interests span <strong>adversarial robustness, graph mining, federated learning, differential privacy</strong>, and their exciting intersections. I am driven by the challenge of making machine learning models both powerful and safe for real-world deployment.</p>
+      <p>I hold a B.Sc. in Statistics from the <a href="https://tsinghua.edu.cn/" target="_blank" rel="noopener">Tsinghua University</a>, where I developed a solid foundation in mathematical analysis and statistical modeling.</p>
 
-    <!-- 研究兴趣 -->
-    <div class="section">
-      <div class="section-title">
-        <span>📖</span> 研究兴趣
-      </div>
-      <div class="research-interests">
-        无线通信与信号处理 · 智能超表面 (RIS) 辅助通信 · 机器学习在物理层中的应用 · 
-        物联网 (IoT) 边缘计算 · 太赫兹通信与感知一体化。
-      </div>
-    </div>
+      <!-- Education -->
+      <h2 id="education">🎓 Education</h2>
+      <ul>
+        <li><strong>Sept. 2019 — June 2023:</strong> Institute of Network Sciences and Cyberspace, Tsinghua University</li>
+        <li><strong>Sept. 2016 — June 2019:</strong> The High School Attached to Northwest Normal University, Lanzhou</li>
+      </ul>
 
-    <!-- 教育背景 -->
-    <div class="section">
-      <div class="section-title">
-        <span>🎓</span> 教育背景
-      </div>
-      <div class="education-item">
-        <div class="edu-degree">硕士研究生 · 电子信息</div>
-        <div class="edu-school">
-          <span>清华大学 · 信息科学技术学院</span>
-          <span class="edu-year">2023 – 至今</span>
-        </div>
-        <div style="font-size:0.9rem; color:#4d4d4d; margin-top:0.2rem;">导师：郑教授 · 计算机实验室</div>
-      </div>
-      <div class="education-item">
-        <div class="edu-degree">工学学士 · 软件工程</div>
-        <div class="edu-school">
-          <span>清华大学</span>
-          <span class="edu-year">2019 – 2023</span>
-        </div>
-        <div style="font-size:0.9rem; color:#4d4d4d; margin-top:0.2rem;">优秀毕业生 · 综合论文训练获校级优秀</div>
-      </div>
-    </div>
-
-    <!-- 代表性论文 -->
-    <div class="section">
-      <div class="section-title">
-        <span>📄</span> 近期出版物
-      </div>
-      <ul class="pub-list">
-        <li class="pub-item">
-          <div class="pub-title">“Deep Learning-Based Channel Estimation for RIS-Assisted mmWave Systems”</div>
-          <div class="pub-authors">WindRider, J. Zhang, L. Wang</div>
-          <div class="pub-journal">IEEE Transactions on Wireless Communications, 2025</div>
-          <a href="#" class="pub-link">[PDF]</a>
+      <!-- Experiences - 修复乱行，采用简洁列表格式 -->
+      <h2 id="experiences">💼 Experiences</h2>
+      <ul>
+        <li>
+          <div class="experience-item">
+            <div class="experience-title">Research Intern</div>
+            <div class="experience-meta">Machine Learning Group, USTC · July 2022 — Present</div>
+            <div class="experience-desc">Proposed a novel defense mechanism that improves model resilience by 23% against targeted attacks.</div>
+          </div>
         </li>
-        <li class="pub-item">
-          <div class="pub-title">“Energy-Efficient Resource Allocation in THz Communications with Intelligent Reflecting Surfaces”</div>
-          <div class="pub-authors">WindRider, Y. Chen, S. Li</div>
-          <div class="pub-journal">IEEE International Conference on Communications (ICC), 2024</div>
-          <a href="#" class="pub-link">[PDF]</a>
+        <li>
+          <div class="experience-item">
+            <div class="experience-title">Teaching Assistant</div>
+            <div class="experience-meta">Statistical Machine Learning · Spring 2022</div>
+            <div class="experience-desc">Assisted professor in grading assignments, holding office hours.</div>
+          </div>
         </li>
-        <li class="pub-item">
-          <div class="pub-title">“面向6G的智能超表面波束成形优化”</div>
-          <div class="pub-authors">WindRider, 张明, 李华</div>
-          <div class="pub-journal">电子学报, 2024</div>
-          <a href="#" class="pub-link">[DOI]</a>
+        <li>
+          <div class="experience-item">
+            <div class="experience-title">Data Science Intern</div>
+            <div class="experience-meta">XYZ Tech, Beijing · Summer 2021</div>
+            <div class="experience-desc">Developed privacy-preserving recommendation algorithms using federated learning techniques.</div>
+          </div>
         </li>
       </ul>
-    </div>
 
-    <!-- 研究项目 -->
-    <div class="section">
-      <div class="section-title">
-        <span>⚡</span> 研究项目
+      <!-- Projects -->
+      <h2 id="projects">🚀 Projects</h2>
+      
+      <div class="project-card">
+        <h3>RobustGNN: Adversarial Defense for Graph Neural Networks</h3>
+        <div class="project-meta">Undergraduate Thesis · Sept. 2022 — June 2023</div>
+        <p>Designed and implemented a scalable defense framework against adversarial attacks on graph-structured data. Achieved state-of-the-art robustness on benchmark datasets while maintaining high clean accuracy.</p>
+        <div class="project-tech">
+          <span>PyTorch</span>
+          <span>Graph Mining</span>
+          <span>Adversarial Robustness</span>
+          <span>Python</span>
+        </div>
       </div>
-      <div style="margin-bottom:1rem;">
-        <div style="font-weight:650;">国家自然科学基金重点项目 · 智能超表面赋能6G覆盖增强</div>
-        <div style="color:#4a4a4a; font-size:0.9rem;">核心参与人 · 负责信道建模与深度学习算法设计 (2024-至今)</div>
-      </div>
-      <div>
-        <div style="font-weight:650;">华为创新研究计划 · 太赫兹通信感知一体化</div>
-        <div style="color:#4a4a4a; font-size:0.9rem;">学生负责人 · 搭建仿真平台并发表论文2篇 (2023-2024)</div>
-      </div>
-    </div>
 
-    <!-- 技术技能 -->
-    <div class="section">
-      <div class="section-title">
-        <span>🛠️</span> 专业技能
+      <div class="project-card">
+        <h3>PrivateFed: Federated Learning with Differential Privacy Guarantees</h3>
+        <div class="project-meta">Course Project · Spring 2022</div>
+        <p>Built a federated learning system with formal differential privacy guarantees. Implemented DP-SGD and evaluated the privacy-utility trade-off on healthcare and financial datasets.</p>
+        <div class="project-tech">
+          <span>TensorFlow</span>
+          <span>Differential Privacy</span>
+          <span>Federated Learning</span>
+          <span>JAX</span>
+        </div>
       </div>
-      <div class="skill-tags">
-        <span class="skill">MATLAB</span>
-        <span class="skill">Python (PyTorch, TensorFlow)</span>
-        <span class="skill">C++</span>
-        <span class="skill">Verilog / FPGA</span>
-        <span class="skill">NS-3 网络仿真</span>
-        <span class="skill">LaTeX</span>
-        <span class="skill">Linux</span>
-        <span class="skill">Git</span>
-      </div>
-    </div>
 
-    <!-- 页脚 -->
-    <div class="footer-note">
-      <span>© 2026 WindRider · 清华大学电子信息</span>
-      <span>更新于 2026年7月</span>
-    </div>
-  </main>
+      <div class="project-card">
+        <h3>Community Detection in Dynamic Social Networks</h3>
+        <div class="project-meta">Independent Research · Fall 2021</div>
+        <p>Developed an unsupervised method for detecting evolving communities in large-scale social graphs. Applied to Twitter data to track information diffusion patterns.</p>
+        <div class="project-tech">
+          <span>NetworkX</span>
+          <span>Scikit-learn</span>
+          <span>Graph Algorithms</span>
+          <span>Pandas</span>
+        </div>
+      </div>
+
+      <!-- Honors -->
+      <h2 id="honors">🏆 Honors and Awards</h2>
+      <ul>
+        <li><strong>Outstanding Undergraduate Scholarship, Gold Award</strong> (Top 3%) · 2020</li>
+        <li><strong>Outstanding Freshman Scholarship</strong> (Top 5%) · 2019</li>
+        <li><strong>National Grants</strong> (Top 5%) · 2019, 2021, 2022</li>
+        <li><strong>Outstanding Undergraduate Scholarship, Bronze Award</strong> (Top 10%) · 2021, 2022</li>
+        <li><strong>Meritorious Winner</strong> · Mathematical Contest in Modeling (MCM) · 2021</li>
+      </ul>
+
+      <!-- Misc -->
+      <h2 id="misc">📌 Misc</h2>
+      <p>Outside of research, I am an avid reader of science fiction and enjoy exploring classical music. I also maintain a small blog where I write about machine learning concepts in plain language. In my free time, I like hiking in the mountains around Beijing and contributing to open-source projects.</p>
+      <p>Feel free to reach out via <strong>goforit@qq.com</strong> for collaboration, discussions, or just to say hello!</p>
+      
+      <div style="height: 8px;"></div>
+    </section>
+  </div>
 </body>
 </html>
