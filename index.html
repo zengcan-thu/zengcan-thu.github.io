@@ -2,538 +2,601 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WindRider's homepage">
   <title>WindRider · Homepage</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --ink: #20242a;
+      --heading: #172b4d;
+      --muted: #68727d;
+      --light-muted: #8b949e;
+      --accent: #315b78;
+      --accent-hover: #1f435d;
+      --border: #e3e7eb;
+      --soft: #f7f8f9;
+      --white: #fff;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #fafbfc;
-      color: #2d3436;
-      line-height: 1.6;
-      margin: 0 auto;
-      padding: 0 28px;
-      max-width: 1150px;
-      transition: background 0.2s ease;
+      background: var(--white);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.72;
     }
 
-    /* 导航栏优化：左对齐，增加间距 */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
     nav {
-      padding: 28px 0 20px;
-      border-bottom: 1px solid #e9ecef;
-      margin-bottom: 48px;
-      backdrop-filter: blur(6px);
-      background: rgba(250, 251, 252, 0.85);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 28px;
       display: flex;
       align-items: baseline;
-      gap: 48px;
+      gap: 34px;
       flex-wrap: wrap;
     }
 
     .nav-name {
-      font-size: 1.5rem;
-      font-weight: 550;
-      letter-spacing: -0.3px;
-      color: #1e272e;
-      margin-right: 64px;
+      margin-right: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      color: var(--heading);
+      font-weight: 600;
+      letter-spacing: -.2px;
     }
 
     .nav-link {
-      color: #4a5568;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 460;
-      padding-bottom: 6px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      cursor: pointer;
+      color: #4f5963;
+      font-size: .94rem;
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
     }
 
     .nav-link:hover {
-      color: #0b5e8c;
-      border-bottom-color: #0b5e8c;
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
     }
 
-    /* 主布局微调 - 添加对齐方式 */
     .main-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 52px 28px 70px;
       display: grid;
-      grid-template-columns: 230px 1fr;
-      gap: 56px;
-      margin-bottom: 60px;
+      grid-template-columns: 235px minmax(0, 1fr);
+      gap: 72px;
       align-items: start;
-      position: relative;
     }
 
-    /* 侧边栏卡片风格 - 使用 fixed 定位彻底固定 */
     .sidebar {
-      background: white;
-      border-radius: 20px;
-      padding: 28px 16px 32px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.02);
-      text-align: center;
-      width: 230px;
-      border: 1px solid #f0f0f0;
-      transition: box-shadow 0.3s;
-      position: fixed;
-      top: 120px;
-      z-index: 5;
-    }
-
-    .sidebar:hover {
-      box-shadow: 0 20px 32px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 88px;
+      text-align: left;
     }
 
     .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
+      display: block;
+      width: 128px;
+      height: 128px;
       object-fit: cover;
-      border: 2px solid #ffffff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      margin-bottom: 18px;
-      background: #edf2f7;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
     }
 
     .sidebar-name {
-      font-size: 1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+      color: var(--heading);
       font-weight: 600;
-      letter-spacing: -0.2px;
-      color: #1a202c;
-      margin-bottom: 4px;
-    }
-
-    .sidebar-slogan {
-      color: #5a6b7a;
-      font-size: 0.9rem;
-      font-weight: 470;
-      margin-bottom: 28px;
-      background: #f2f5f9;
-      display: inline-block;
-      padding: 4px 16px;
-      border-radius: 30px;
+      margin-bottom: 17px;
     }
 
     .sidebar-links {
-      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-top: 8px;
+      gap: 11px;
     }
 
     .sidebar-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      color: #2d3748;
-      transition: background 0.15s;
-      text-decoration: none;
-    }
-
-    .sidebar-item:hover {
-      background: #f7f9fc;
-    }
-
-    .sidebar-item span:first-child {
-      font-size: 1.1rem;
-      width: 20px;
-      text-align: center;
-      color: #4a627a;
+      gap: 9px;
+      min-height: 20px;
+      color: var(--muted);
+      font-size: .9rem;
     }
 
     .sidebar-item a {
-      color: #2d3748;
-      text-decoration: none;
-      font-weight: 470;
+      color: var(--muted);
     }
 
     .sidebar-item a:hover {
-      color: #0b5e8c;
-      text-decoration: underline;
+      color: var(--accent);
     }
 
-    /* 右侧内容区域 - 保持正常流 */
+    /* Unified academic SVG icon style */
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      color: #65717c;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-icon.github-icon {
+      fill: none;
+      stroke-width: 1.55;
+    }
+
+    .contact-icon.scholar-icon {
+      stroke-width: 1.55;
+    }
+
     .content {
-      grid-column: 2;
+      min-width: 0;
     }
 
     .content h2 {
-      font-size: 1.7rem;
+      margin: 0 0 18px;
+      padding-top: 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      line-height: 1.3;
       font-weight: 600;
-      margin: 38px 0 14px;
-      color: #0b2b3b;
-      letter-spacing: -0.3px;
-      border-bottom: 1.5px solid #e2e8f0;
-      padding-bottom: 8px;
-      scroll-margin-top: 100px;
+      color: var(--heading);
+      scroll-margin-top: 95px;
     }
 
-    .content h2:first-of-type {
-      margin-top: 0;
+    .content section,
+    .content > h2 {
+      margin-bottom: 42px;
     }
 
     .content p {
-      font-size: 1.05rem;
-      color: #2c3e50;
-      margin-bottom: 16px;
+      margin-bottom: 13px;
     }
 
-    .content a {
-      color: #1a6b9e;
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px dotted #a0c4e6;
-    }
-
-    .content a:hover {
-      color: #0a4b6e;
-      border-bottom: 1px solid #0a4b6e;
-    }
-
-    .content ul {
-      padding-left: 20px;
-      margin: 10px 0 20px;
-      list-style-type: none;
-    }
-
-    .content li {
-      font-size: 1.02rem;
-      margin: 12px 0;
-      color: #2d3a4a;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .content li::before {
-      content: "▹";
-      color: #2c7da0;
-      font-weight: bold;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    /* 经历列表样式优化 */
-    .experience-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .experience-item .experience-title {
+    .content strong {
+      color: #29333d;
       font-weight: 600;
-      color: #1a202c;
     }
 
-    .experience-item .experience-meta {
-      font-size: 0.9rem;
-      color: #5a6b7a;
-      font-style: italic;
-    }
-
-    .experience-item .experience-desc {
-      font-size: 0.98rem;
-      color: #2d3a4a;
-    }
-
-    /* 项目卡片样式 */
-    .project-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 20px;
-      border: 1px solid #e9ecef;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .project-card:hover {
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
-    }
-
-    .project-card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1a202c;
-      margin-bottom: 8px;
-    }
-
-    .project-card .project-meta {
-      font-size: 0.9rem;
-      color: #5a6b7a;
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
-    .project-card p {
-      font-size: 0.98rem;
-      color: #2d3a4a;
-      margin-bottom: 0;
-    }
-
-    .project-card .project-tech {
+    .research-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 7px 9px;
+      list-style: none;
     }
 
-    .project-tech span {
-      background: #e8f0fe;
-      color: #1a6b9e;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 500;
+    .research-list li {
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      color: #59636d;
+      font-size: .88rem;
     }
 
-    /* 响应式 */
-    @media (max-width: 768px) {
-      body {
-        padding: 0 20px;
-      }
+    .news-list,
+    .timeline-list,
+    .project-list,
+    .honors-list {
+      list-style: none;
+    }
 
-      nav {
-        padding: 20px 0 16px;
-        margin-bottom: 32px;
-      }
+    .news-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+      margin-bottom: 9px;
+    }
 
+    .news-date,
+    .timeline-meta,
+    .project-meta {
+      color: var(--light-muted);
+      font-size: .88rem;
+    }
+
+    /*publication的位置*/
+
+    .ccf-level {
+      color: #d32f2f;  /* 学术红，比纯红更稳重 */
+      font-weight: bold;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      gap: 22px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 0;
+    }
+
+    .timeline-title,
+    .project-title {
+      color: var(--heading);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .timeline-desc,
+    .project-desc {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .project-item {
+      padding: 0 0 22px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-item:last-child {
+      border-bottom: 0;
+    }
+
+    .honors-list li {
+      margin-bottom: 7px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .honors-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .8em;
+      width: 4px;
+      height: 4px;
+      background: #87919b;
+      border-radius: 50%;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 35px;
+      color: var(--light-muted);
+      font-size: .82rem;
+    }
+
+    @media (max-width: 800px) {
       .nav-container {
-        gap: 24px;
+        padding: 15px 20px;
+        gap: 18px 25px;
       }
 
       .nav-name {
-        font-size: 1.4rem;
         width: 100%;
-        margin-bottom: 6px;
         margin-right: 0;
       }
 
       .main-wrap {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 38px;
+        padding: 38px 20px 55px;
       }
 
       .sidebar {
         position: static;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
         text-align: center;
-        padding: 24px 16px;
-        gap: 12px;
-      }
-
-      .content {
-        grid-column: 1;
       }
 
       .avatar {
-        width: 100px;
-        height: 100px;
-      }
-
-      .sidebar-name {
-        font-size: 1.4rem;
-        width: 100%;
-      }
-
-      .sidebar-slogan {
-        margin-bottom: 8px;
-        width: 100%;
+        margin: 0 auto 15px;
+        width: 105px;
+        height: 105px;
       }
 
       .sidebar-links {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 14px;
-        width: 100%;
-        margin-top: 8px;
+        align-items: center;
       }
 
       .sidebar-item {
-        padding: 6px 10px;
-        font-size: 0.9rem;
+        justify-content: center;
       }
 
       .content h2 {
-        font-size: 1.5rem;
-        margin-top: 28px;
-        scroll-margin-top: 120px;
+        font-size: 1.4rem;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 14px; }
+
+      .nav-container {
+        gap: 12px 20px;
+      }
+
+      .nav-link {
+        font-size: .88rem;
+      }
+
+      .news-item {
+        grid-template-columns: 72px 1fr;
+        gap: 12px;
+      }
+
+      .content section,
+      .content > h2 {
+        margin-bottom: 34px;
       }
     }
 
     @media print {
-      body {
-        background: white;
-      }
-      .sidebar {
-        position: static;
-        box-shadow: none;
-        border: 1px solid #ccc;
-      }
+      nav { position: static; }
+      .sidebar { position: static; }
+      a { color: inherit; }
     }
   </style>
 </head>
+
 <body>
-  <!-- 导航栏：左对齐，间距已增加 -->
   <nav>
     <div class="nav-container">
       <span class="nav-name">WindRider</span>
-      <a href="#about" class="nav-link">About Me</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#experiences" class="nav-link">Experiences</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#news" class="nav-link">News</a>
+      <a href="#publications" class="nav-link">Publications</a>
       <a href="#projects" class="nav-link">Projects</a>
-      <a href="#honors" class="nav-link">Honors</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#honors" class="nav-link">Honors and Awards</a>
       <a href="#misc" class="nav-link">Misc</a>
     </div>
   </nav>
 
-  <div class="main-wrap">
-    <!-- 左侧侧边栏 - 使用fixed定位完全固定 -->
+  <main class="main-wrap">
     <aside class="sidebar">
       <img class="avatar" src="avatar.jpg" alt="WindRider portrait">
       <div class="sidebar-name">WindRider</div>
+
       <div class="sidebar-links">
+        <!-- Location -->
         <div class="sidebar-item">
-          <span>📍</span>
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/>
+            <circle cx="12" cy="9" r="2.3"/>
+          </svg>
           <span>Beijing, China</span>
         </div>
+
+        <!-- Email -->
         <div class="sidebar-item">
-          <span>✉️</span>
-          <span>goforit@qq.com</span>
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5.5" width="18" height="13" rx="1.5"/>
+            <path d="m4 7 8 6 8-6"/>
+          </svg>
+          <a href="mailto:zengcan_thu@qq.com">zengcan_thu@qq.com</a>
         </div>
+
+        <!-- GitHub -->
         <div class="sidebar-item">
-          <span>🐱</span>
-          <a href="https://github.com/your-github" target="_blank" rel="noopener">Github</a>
+          <svg class="contact-icon github-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.56c.43.08.59-.19.59-.42v-1.62c-2.4.52-2.91-1.02-2.91-1.02-.39-.99-.96-1.25-.96-1.25-.78-.53.06-.52.06-.52.86.06 1.31.88 1.31.88.77 1.31 2.02.93 2.52.71.08-.55.3-.93.55-1.15-1.92-.22-3.94-.96-3.94-4.28 0-.95.34-1.72.88-2.33-.09-.22-.38-1.1.08-2.29 0 0 .72-.23 2.36.89a8.2 8.2 0 0 1 4.3 0c1.64-1.12 2.36-.89 2.36-.89.46 1.19.17 2.07.08 2.29.55.61.88 1.38.88 2.33 0 3.33-2.03 4.06-3.96 4.27.31.27.58.79.58 1.59v2.36c0 .23.16.5.59.42A8.5 8.5 0 0 0 12 3.5z"/>
+          </svg>
+          <a href="https://github.com/zengcan-thu" target="_blank" rel="noopener">GitHub</a>
         </div>
+
+        <!-- Google Scholar -->
         <div class="sidebar-item">
-          <span>🎓</span>
+          <svg class="contact-icon scholar-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10.2 12 4l8 6.2-8 6.2-8-6.2z"/>
+            <path d="M7 12.7v3.1c0 1.6 2.2 3 5 3s5-1.4 5-3v-3.1"/>
+            <path d="M20 10.2v4.1"/>
+          </svg>
           <a href="https://scholar.google.com/your-id" target="_blank" rel="noopener">Google Scholar</a>
         </div>
       </div>
     </aside>
 
-    <!-- 右侧正文内容 -->
     <section class="content">
-      <!-- About Me -->
       <h2 id="about">About Me</h2>
-      <p>I am <strong>WindRider (乘风)</strong>, a passionate researcher and engineer based in Beijing, China. I am currently seeking a <strong>Ph.D. position in machine learning</strong>, with a strong focus on building robust, private, and trustworthy learning systems.</p>
-      <p>My research interests span <strong>adversarial robustness, graph mining, federated learning, differential privacy</strong>, and their exciting intersections. I am driven by the challenge of making machine learning models both powerful and safe for real-world deployment.</p>
-      <p>I hold a B.Sc. in Statistics from the <a href="https://tsinghua.edu.cn/" target="_blank" rel="noopener">Tsinghua University</a>, where I developed a solid foundation in mathematical analysis and statistical modeling.</p>
+      <section>
+        <p>
+          I'm <strong> Can Zeng (曾灿) </strong>, currently a master's student at the Institute for Network Sciences and Cyberspace, 
+          Tsinghua University, majoring in Electronic Information. 
+        </p>
+        <p>
+          My research interests span <strong>adversarial robustness, graph mining,
+          federated learning, differential privacy</strong>, and their exciting
+          intersections. I am driven by the challenge of making machine learning
+          models both powerful and safe for real-world deployment.
+        </p>
+        <ul class="research-list">
+          <li>Large Language Model</li>
+          <li>Agent</li>
+          <li>Knowledge Graph</li>
+          <li>Retrieval-Augmented Generation</li>
+          <li>Complex Question Answering</li>
+        </ul>
+      </section>
 
-      <!-- Education -->
-      <h2 id="education">🎓 Education</h2>
-      <ul>
-        <li><strong>Sept. 2019 — June 2023:</strong> Institute of Network Sciences and Cyberspace, Tsinghua University</li>
-        <li><strong>Sept. 2016 — June 2019:</strong> The High School Attached to Northwest Normal University, Lanzhou</li>
-      </ul>
+      <h2 id="news">News</h2>
+      <section>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">2026</span>
+            <span>Coming soon.</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2026</span>
+            <span>Coming soon.</span>
+          </li>
+        </ul>
+      </section>
 
-      <!-- Experiences -->
-      <h2 id="experiences">💼 Experiences</h2>
-      <ul>
-        <li>
-          <div class="experience-item">
-            <div class="experience-title">Research Intern</div>
-            <div class="experience-meta">Machine Learning Group, USTC · July 2022 — Present</div>
-            <div class="experience-desc">Proposed a novel defense mechanism that improves model resilience by 23% against targeted attacks.</div>
-          </div>
-        </li>
-        <li>
-          <div class="experience-item">
-            <div class="experience-title">Teaching Assistant</div>
-            <div class="experience-meta">Statistical Machine Learning · Spring 2022</div>
-            <div class="experience-desc">Assisted professor in grading assignments, holding office hours.</div>
-          </div>
-        </li>
-        <li>
-          <div class="experience-item">
-            <div class="experience-title">Data Science Intern</div>
-            <div class="experience-meta">XYZ Tech, Beijing · Summer 2021</div>
-            <div class="experience-desc">Developed privacy-preserving recommendation algorithms using federated learning techniques.</div>
-          </div>
-        </li>
-      </ul>
+      <h2 id="publications">Publications</h2>
+      <section>
+        <p>
+          <a href="https://arxiv.org/abs/2306.10968">BayLing: Bridging Cross-lingual Alignment and Instruction Following through Interactive Translation for Large Language Models</a>.
+          Preprint 2023. <span class="ccf-level">(CCF-A)</span><br>
+          <strong>Shaolei Zhang</strong>, Qingkai Fang, Xilin Chen, Yang Feng.
+        </p>
+      </section>  
 
-      <!-- Projects -->
-      <h2 id="projects">🚀 Projects</h2>
+      <h2 id="projects">Projects</h2>
+      <section>
+        <ul class="project-list">
+          <li class="project-item">
+            <div class="project-title">RobustGNN: Adversarial Defense for Graph Neural Networks</div>
+            <div class="project-meta">Undergraduate Thesis · Sept. 2022 — June 2023</div>
+            <div class="project-desc">
+              Designed and implemented a scalable defense framework against
+              adversarial attacks on graph-structured data. Achieved state-of-the-art
+              robustness on benchmark datasets while maintaining high clean accuracy.
+            </div>
+          </li>
+          <li class="project-item">
+            <div class="project-title">PrivateFed: Federated Learning with Differential Privacy Guarantees</div>
+            <div class="project-meta">Course Project · Spring 2022</div>
+            <div class="project-desc">
+              Built a federated learning system with formal differential privacy
+              guarantees. Implemented DP-SGD and evaluated the privacy-utility
+              trade-off on healthcare and financial datasets.
+            </div>
+          </li>
+          <li class="project-item">
+            <div class="project-title">Community Detection in Dynamic Social Networks</div>
+            <div class="project-meta">Independent Research · Fall 2021</div>
+            <div class="project-desc">
+              Developed an unsupervised method for detecting evolving communities
+              in large-scale social graphs. Applied to Twitter data to track
+              information diffusion patterns.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <h2 id="experience">Experience</h2>
+      <section>
+        <ul class="timeline-list">
+          <li class="timeline-item">
+            <div class="timeline-meta">July 2022 — Present</div>
+            <div>
+              <div class="timeline-title">Research Intern</div>
+              <div>Machine Learning Group, USTC</div>
+              <div class="timeline-desc">
+                Proposed a novel defense mechanism that improves model resilience
+                by 23% against targeted attacks.
+              </div>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-meta">Spring 2022</div>
+            <div>
+              <div class="timeline-title">Teaching Assistant</div>
+              <div>Statistical Machine Learning</div>
+              <div class="timeline-desc">
+                Assisted professor in grading assignments and holding office hours.
+              </div>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-meta">Summer 2021</div>
+            <div>
+              <div class="timeline-title">Data Science Intern</div>
+              <div>XYZ Tech, Beijing</div>
+              <div class="timeline-desc">
+                Developed privacy-preserving recommendation algorithms using
+                federated learning techniques.
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
       
-      <div class="project-card">
-        <h3>RobustGNN: Adversarial Defense for Graph Neural Networks</h3>
-        <div class="project-meta">Undergraduate Thesis · Sept. 2022 — June 2023</div>
-        <p>Designed and implemented a scalable defense framework against adversarial attacks on graph-structured data. Achieved state-of-the-art robustness on benchmark datasets while maintaining high clean accuracy.</p>
-        <div class="project-tech">
-          <span>PyTorch</span>
-          <span>Graph Mining</span>
-          <span>Adversarial Robustness</span>
-          <span>Python</span>
-        </div>
-      </div>
+      <h2 id="education">Education</h2>
+      <section>
+        <ul class="timeline-list">
+          <li class="timeline-item">
+            <div class="timeline-meta">2021.09 — 2025.06</div>
+            <div>
+              <div class="timeline-title">软件工程</div>
+              <div>武汉理工大学，计算机与人工智能学院</div>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-meta">2026.09 — </div>
+            <div>
+              <div class="timeline-title">电子信息</div>
+              <div>清华大学，网络科学与网络空间研究院</div>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-      <div class="project-card">
-        <h3>PrivateFed: Federated Learning with Differential Privacy Guarantees</h3>
-        <div class="project-meta">Course Project · Spring 2022</div>
-        <p>Built a federated learning system with formal differential privacy guarantees. Implemented DP-SGD and evaluated the privacy-utility trade-off on healthcare and financial datasets.</p>
-        <div class="project-tech">
-          <span>TensorFlow</span>
-          <span>Differential Privacy</span>
-          <span>Federated Learning</span>
-          <span>JAX</span>
-        </div>
-      </div>
+      <h2 id="honors">Honors and Awards</h2>
+      <section>
+        <ul class="honors-list">
+          <li><strong>Outstanding Undergraduate Scholarship, Gold Award</strong> (Top 3%) · 2020</li>
+          <li><strong>Outstanding Freshman Scholarship</strong> (Top 5%) · 2019</li>
+          <li><strong>National Grants</strong> (Top 5%) · 2019, 2021, 2022</li>
+          <li><strong>Outstanding Undergraduate Scholarship, Bronze Award</strong> (Top 10%) · 2021, 2022</li>
+          <li><strong>Meritorious Winner</strong> · Mathematical Contest in Modeling (MCM) · 2021</li>
+        </ul>
+      </section>
 
-      <div class="project-card">
-        <h3>Community Detection in Dynamic Social Networks</h3>
-        <div class="project-meta">Independent Research · Fall 2021</div>
-        <p>Developed an unsupervised method for detecting evolving communities in large-scale social graphs. Applied to Twitter data to track information diffusion patterns.</p>
-        <div class="project-tech">
-          <span>NetworkX</span>
-          <span>Scikit-learn</span>
-          <span>Graph Algorithms</span>
-          <span>Pandas</span>
-        </div>
-      </div>
-
-      <!-- Honors -->
-      <h2 id="honors">🏆 Honors and Awards</h2>
-      <ul>
-        <li><strong>Outstanding Undergraduate Scholarship, Gold Award</strong> (Top 3%) · 2020</li>
-        <li><strong>Outstanding Freshman Scholarship</strong> (Top 5%) · 2019</li>
-        <li><strong>National Grants</strong> (Top 5%) · 2019, 2021, 2022</li>
-        <li><strong>Outstanding Undergraduate Scholarship, Bronze Award</strong> (Top 10%) · 2021, 2022</li>
-        <li><strong>Meritorious Winner</strong> · Mathematical Contest in Modeling (MCM) · 2021</li>
-      </ul>
-
-      <!-- Misc -->
-      <h2 id="misc">📌 Misc</h2>
-      <p>Outside of research, I am an avid reader of science fiction and enjoy exploring classical music. I also maintain a small blog where I write about machine learning concepts in plain language. In my free time, I like hiking in the mountains around Beijing and contributing to open-source projects.</p>
-      <p>Feel free to reach out via <strong>goforit@qq.com</strong> for collaboration, discussions, or just to say hello!</p>
-      
-      <div style="height: 8px;"></div>
+      <h2 id="misc">Misc</h2>
+      <section>
+        <p>
+          Outside of research, I am an avid reader of science fiction and enjoy
+          exploring classical music. I also maintain a small blog where I write
+          about machine learning concepts in plain language. In my free time,
+          I like hiking in the mountains around Beijing and contributing to
+          open-source projects.
+        </p>
+        <p>
+          Feel free to contact me!
+        </p>
+      </section>
     </section>
-  </div>
+  </main>
+
+  <footer>
+    © WindRider · Homepage
+  </footer>
 </body>
 </html>
